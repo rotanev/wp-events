@@ -1,0 +1,54 @@
+.wpe-events {
+    width: calc(100% - 8rem);
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 120rem;
+}
+
+.wpe-events p {
+    line-height: 1;
+}
+
+.wpe-events p span {
+    color: grey;
+}
+
+.wpe-head {
+    text-align: center;
+    background: #fff;
+    padding: 8rem 0;
+}
+
+.wpe-head .section-inner {
+    max-width: 100rem;
+}
+
+.wpe-event {
+    padding-top: 8rem;
+}
+
+.wpe-button {
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+    background: #cd2653;
+    padding: 1rem 3rem;
+    color: white;
+}
+
+.wpe-event-actions {
+    margin-bottom: 6rem;
+    padding-top: 1.5rem;
+}
+
+.wpe-event-map {
+    width: 100%;
+}
+
+.wpe-event-map iframe {
+    min-height: 500px;
+}
+
+.event-template-default .footer-nav-widgets-wrapper {
+    margin-top: 0 !important;
+}

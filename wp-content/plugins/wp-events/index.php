@@ -13,6 +13,11 @@
 */
 
 add_action( 'init', 'wpe_init' );
+add_action( 'init', 'wpe_rewrite' );
+add_action( 'wp_enqueue_scripts', 'wpe_theme_asset' );
+add_action( 'template_include', 'wpe_template_include' );
+add_filter( 'query_vars', 'wpe_query_vars' );
+
 
 if ( is_admin() ) {
     add_action( 'admin_head', 'wpe_post_meta_css' );
@@ -40,6 +45,29 @@ function wpe_init() {
     ];
 
     register_post_type( 'event', $args );
+}
+
+function wpe_theme_asset() {
+    wp_enqueue_style( 'wpe-style', plugins_url('/style.css', __FILE__) );
+}
+
+function wpe_rewrite() {
+    add_rewrite_rule( 'events[/]?$', 'index.php?events=1', 'top' );
+}
+
+function wpe_query_vars( $query_vars ) {
+    $query_vars[] = 'events';
+    return $query_vars;
+}
+
+function wpe_template_include( $template ) {
+    if ( get_query_var( 'events' ) ) {
+        return dirname(__FILE__) . '/archive-event.php';
+    }
+    if ( is_single() && get_post_type() == 'event' ) {
+        return dirname(__FILE__) . '/single-event.php';
+    }
+    return $template;
 }
 
 function wpe_post_meta_css() {
